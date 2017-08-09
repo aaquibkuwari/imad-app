@@ -66,7 +66,7 @@ var htmlTemplate = `<!DOCTYPE HTML>
 </html>
 `;
 return htmlTemplate;
-};
+}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -79,7 +79,7 @@ app.get('/google052b30ea089a71b9.html', function (req, res) {
 
 app.get('/:articlename', function (req, res) {
 var articlename=req.params.articlename;
-  res.send(createtemplate(articles[articlename]));
+  res.send(createtemplate(articles[articlename]))});
 
 
 app.get('/ui/style.css', function (req, res) {
