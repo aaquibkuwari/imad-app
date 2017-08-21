@@ -71,6 +71,12 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+app.get('/counter', function (req, res) {
+    
+    res.send("counter.toString()");
+});  
+
+
 app.get('/google052b30ea089a71b9.html', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'google052b30ea089a71b9.html'));
 });
@@ -81,10 +87,6 @@ var articlename=req.params.articlename;
   res.send(createTemplate(articles[articlename]))});
   
   
-app.get('/counter', function (req, res) {
-    
-    res.send("counter.toString()");
-});  
 
 
 app.get('/ui/style.css', function (req, res) {
