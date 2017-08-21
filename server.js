@@ -79,6 +79,12 @@ app.get('/google052b30ea089a71b9.html', function (req, res) {
 app.get('/:articlename', function (req, res) {
 var articlename=req.params.articlename;
   res.send(createTemplate(articles[articlename]))});
+  
+var counter=0;  
+app.get('/counter', function(req,res){
+    counter=counter+1;
+    res.send(counter.toString());
+});  
 
 
 app.get('/ui/style.css', function (req, res) {
