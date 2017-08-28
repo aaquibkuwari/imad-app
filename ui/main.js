@@ -24,16 +24,31 @@ button.onclick = function (){
     
 };
 
-var nameinput=document.getElementById("name");
-var name = nameinput.value;
+
 var submit = document.getElementById("submit_btn");
 submit.onclick = function() {
+    var request = new XMLHttpRequest();
+    var nameinput=document.getElementById("name");
+    var name = nameinput.value;
+    request.onreadystatechange =  function() {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            //take some action
+            if(request.status === 200){
+                var names=request.responseText;
+                names = JSON.parse(names);
+                 var list="";
+                    for(var i=0; i<name.length;i++){
+                        list += '<li>'+name[i]+'</li>';
+                    }
+                var ul = document.getElementById("namelist");
+                ul.innerHTML=list;
+            }
+        }
+    };
     
-    var name=["name1","name2","name3"];
-    var list="";
-    for(var i=0; i<name.length;i++){
-        list += '<li>'+name[i]+'</li>';
-    }
-    var ul = document.getElementById("namelist");
-    ul.innerHTML=list;
+    //make the request
+    request.open('GET','http://aaquibkuwari.imad.hasura-app.io/submit-name?name='+name, true);
+    request.send(null);
+    
+    
 }
