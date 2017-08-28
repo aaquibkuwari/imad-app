@@ -82,6 +82,14 @@ app.get('/google052b30ea089a71b9.html', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'google052b30ea089a71b9.html'));
 });
 
+var names = [];
+app.get('/submit-name', function (req, res) {
+  var name = req.query.name;
+  
+  names.push(name);
+  
+  res.send(JSON.stringify(names));
+});
 
 app.get('/:articlename', function (req, res) {
 var articlename=req.params.articlename;
@@ -102,14 +110,7 @@ app.get('/ui/Aaquib_kuwari_image.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'Aaquib_kuwari_image.jpg'));
 });
 
-var names = [];
-app.get('/submit-name', function (req, res) {
-  var name = req.query.name;
-  
-  names.push(name);
-  
-  res.send(JSON.stringify(names));
-});
+
 
 
 // Do not change port, otherwise your app won't run on IMAD servers
