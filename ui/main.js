@@ -28,8 +28,7 @@ button.onclick = function (){
 var submit = document.getElementById("submit_btn");
 submit.onclick = function() {
     var request = new XMLHttpRequest();
-    var nameinput=document.getElementById("name");
-    var name = nameinput.value;
+    
     request.onreadystatechange =  function() {
         if (request.readyState === XMLHttpRequest.DONE) {
             //take some action
@@ -46,9 +45,11 @@ submit.onclick = function() {
         }
     };
     
+     var nameinput=document.getElementById("name");
+    var name = nameinput.value;
     //make the request
     request.open('GET','http://aaquibkuwari.imad.hasura-app.io/submit-name?name='+name, true);
     request.send(null);
     
     
-}
+};
